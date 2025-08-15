@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Camera Test</title>
+</head>
+<body>
+    <h1><a href="/">Go to index</a></h1>
+
+    <video id="video" autoplay playsinline width="640" height="480"></video>
+    <img id="output" width="640" height="480" alt="Processed Image"/>
+    <script>
+        const video = document.getElementById('video');
+        const output = document.getElementById('output');
+
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(stream => { video.srcObject = stream; });
+
+        function captureAndSend() {
+            const canvas = document.createElement('canvas');
+            canvas.width = video.videoWidth || 640;
+            canvas.height = video.videoHeight || 480;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            canvas.toBlob(blob => {
+                fetch('/upload', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'image/jpeg' },
+                    body: blob
+                })
+                .then(res => res.blob())
+                .then(blob => {
+                    const url = URL.createObjectURL(blob);
+                    output.src = url;
+                })
+                .catch(console.error);
+            }, 'image/jpeg');
+        }
+
+        setInterval(captureAndSend, 60);
+    </script>
+
+</body>
+</html>
