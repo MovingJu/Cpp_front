@@ -1,22 +1,30 @@
 FROM alpine:latest AS compiletime
 
-RUN apk add g++ make linux-headers
+RUN apk add g++ linux-headers cmake make build-base
 
 WORKDIR /app
 
 COPY ./extern ./extern
-COPY ./routes ./routes
-COPY ./main.cpp .
-COPY ./Makefile .
+COPY ./include ./include
+COPY ./src ./src
+COPY ./templates ./templates
+COPY ./static ./static
+COPY ./.env .
+COPY ./CMakeLists.txt .
 
-RUN make build commands=-static&&strip e
+RUN cmake -S . -B build \
+ && cmake --build build 
+
 
 FROM alpine:latest AS runtime
 
+RUN apk add libstdc++ libgcc 
+
 WORKDIR /app
 
-COPY ./templates /app/templates
-COPY ./static /app/static
-COPY --from=compiletime /app/e /app
+COPY --from=compiletime /app/build/templates ./templates
+COPY --from=compiletime /app/build/static ./static
+COPY --from=compiletime /app/build/.env .
+COPY --from=compiletime /app/build/e .
 
 CMD ["./e"]

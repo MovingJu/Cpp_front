@@ -1,5 +1,7 @@
 #include "crow.h"
-#include "routes/__init__.h"
+#include "../include/__init__.h"
+
+// to do : dotenv로드 안되면 세그멘트 뜨는 에러 처리하기 ---> 불가능 ㅋㅋ. sigterm 날라오는 순간 쓰레드 꼬임
 
 int main() {
     crow::SimpleApp app;
@@ -14,10 +16,6 @@ int main() {
 
     CROW_ROUTE(app, "/intro")([](){
         return intro();
-    });
-
-    CROW_ROUTE(app, "/cors_dogbaby")([](){
-        return cors_bullshit();
     });
 
     app.port(8080)
