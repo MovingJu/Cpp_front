@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Camera Test</title>
+</head>
+<body>
+    <h1><a href="/">Go to index</a></h1>
+
+    <video id="video" autoplay playsinline width="640" height="480"></video>
+    <canvas id="output" width="640" height="480" alt="Processed Image">processed image</canvas>
+    <script>const link = "{{& link}}";</script>
+    <script src="/static/js/try_it_out.js"></script>
+    <script>setInterval(captureAndSend, 60);</script>
+
+</body>
+</html>

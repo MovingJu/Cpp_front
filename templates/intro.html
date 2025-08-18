@@ -7,26 +7,12 @@
     <link rel="dns-prefetch" href="https://MovingJu.disqus.com" />
     <title>MovingJu</title>
     <link rel="stylesheet" href="/static/css/intro.css" />
-    <script>
-      (function(){
-        const themeMap = {
-          'default-dark': {
-            'background-color': '#222',
-            'text-color': 'white',
-            'highlight-color': '#2e2e2e'
-          } 
-        };
-        const savedTheme = localStorage.getItem('theme') || 'default-dark';
-        const theme = themeMap[savedTheme] || themeMap['default-dark'];
-        const html = document.documentElement;
-        for (const key in theme) {
-          html.style.setProperty(`--primary-${key}`, theme[key]);
-        }
-      })();
-    </script>
+    <link rel="stylesheet" href="/static/css/share_btn.css">
+    <script src="/static/js/load_theme.js"></script>
+    <script>load_theme();</script>
   </head>
-
-  <body onload="onLoad()">
+  
+  <body>
     <div class="mid-section-cover">
     <nav>
         <h1>MovingJu</h1>
@@ -42,16 +28,21 @@
                 </a>
             </li>
             <li>
-                <a href = "/test">
+                <a href = "/try_it_out">
                 Try It Out!
                 </a>
+            </li>
+            <li>
+              <a href="mailto:movingju06@khu.ac.kr">
+                Contact Me
+              </a>
             </li>
         </ul>
     </nav>
     <main class="sub-mid-section-cover">
-        <h2>[Algorithm] 백준 1043 - 거짓말</h2>
+        <h2>방중 프로젝트</h2>
 <small></small>
-<p><strong>글쓴이</strong> : MovingJu</p>
+<p><strong>글쓴이</strong> : 이동주 (인공지능학과 25학번)</p>
 
 <p><a href="https://www.acmicpc.net/problem/1043"><img src="/image/baekjoon.png" alt="image" width="600" height="auto" style="display: block; margin: 0 auto;" href="https://www.acmicpc.net/problem/1043" /></a></p>
 
@@ -99,41 +90,8 @@
 
 
 <div class="post-footer">
-<div class="post-categories">
-  Categories :
-  
-  
-      <a href="/categories/#Algorithm">Algorithm</a>
-  
-  
-</div>
-<div>
 
-<style>
-#share-buttons {display: inline-block; vertical-align: middle; }
-#share-buttons:after {content: ""; display: block; clear: both;}
-#share-buttons > div {
-    position: relative;
-    text-align: left; 
-    height: 36px; 
-    width: 32px; 
-    float: left; 
-    text-align: center;
-}
-#share-buttons > div > svg {height: 16px; fill: #d5d5d5; margin-top: 10px;}
-#share-buttons > div:hover {cursor: pointer;}
-#share-buttons > div.facebook:hover > svg {fill: #3B5998;}
-#share-buttons > div.twitter:hover > svg {fill: #55ACEE;}
-#share-buttons > div.linkedin:hover > svg {fill: #0077b5;}
-#share-buttons > div.pinterest:hover > svg {fill: #CB2027;}
-#share-buttons > div.mail:hover > svg {fill: #7D7D7D;}
-#share-buttons > div.instagram:hover > svg {fill: #C73B92;}
-#share-buttons > div.facebook > svg {height: 18px; margin-top: 9px;}
-#share-buttons > div.twitter > svg {height: 20px; margin-top: 8px;}
-#share-buttons > div.linkedin > svg {height: 19px; margin-top: 7px;}
-#share-buttons > div.pinterest > svg {height: 20px; margin-top: 9px;}
-#share-buttons > div.mail > svg {height: 14px; margin-top: 11px;}
-</style>
+<div>
 
 <span>Share on: </span><div id="share-buttons">
     <div class="facebook" title="Share this on Facebook" onclick="window.open('http://www.facebook.com/share.php?u=http://localhost:4000/algorithm/2025/07/28/algorithm-_baekjun_1043.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z"/></svg></div>

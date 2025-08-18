@@ -8,8 +8,8 @@ int main() {
         return index();
     });
 
-    CROW_ROUTE(app, "/test")([](){
-        return test();
+    CROW_ROUTE(app, "/try_it_out")([](){
+        return try_it_out();
     });
 
     CROW_ROUTE(app, "/intro")([](){
