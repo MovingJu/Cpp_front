@@ -35,6 +35,7 @@ ws.onmessage = async (e) => {
     ctx.drawImage(tempCanvas, 0, 0, smallWidth, smallHeight, 0, 0, canvas.width, canvas.height);
 }
 
+// 178, 218
 function captureAndSend() {
     const scale = 0.25;
     const width = (video.videoWidth || 640) * scale;

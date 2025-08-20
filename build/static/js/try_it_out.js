@@ -5,8 +5,8 @@ navigator.mediaDevices.getUserMedia({ video: true })
 const canvas = document.getElementById('output');
 const ctx = canvas.getContext("2d");
 
-canvas.width = 640;
-canvas.height = 480;
+canvas.width = 178;
+canvas.height = 218;
 
 const ws = new WebSocket(link + "/ws");
 
@@ -18,8 +18,9 @@ ws.onmessage = async (e) => {
     const arrayBuffer = await e.data.arrayBuffer();
     const uint8 = new Uint8ClampedArray(arrayBuffer);
 
-    const smallWidth = 160;
-    const smallHeight = 120;
+    const scale = 0.25;
+    const smallWidth = (video.videoWidth || 178) * scale;
+    const smallHeight = (video.videoHeight || 218) * scale;
 
     const imageData = new ImageData(uint8, smallWidth, smallHeight);
 
