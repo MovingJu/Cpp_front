@@ -1,15 +1,15 @@
-function load_theme(){
-    const themeMap = {
+function load_theme() {
+    var themeMap = {
         'default-dark': {
-        'background-color': '#222',
-        'text-color': 'white',
-        'highlight-color': '#2e2e2e'
-        } 
+            'background-color': '#222',
+            'text-color': 'white',
+            'highlight-color': '#2e2e2e'
+        }
     };
-    const savedTheme = localStorage.getItem('theme') || 'default-dark';
-    const theme = themeMap[savedTheme] || themeMap['default-dark'];
-    const html = document.documentElement;
-    for (const key in theme) {
-        html.style.setProperty(`--primary-${key}`, theme[key]);
-    }
+    var savedTheme = localStorage.getItem('theme') || 'default-dark';
+    var theme = themeMap['default-dark'];
+    var html = document.documentElement;
+    Object.keys(theme).forEach(function (key) {
+        html.style.setProperty("--primary-".concat(key), theme[key]);
+    });
 }
