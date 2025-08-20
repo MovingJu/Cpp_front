@@ -1,8 +1,0 @@
-[
-{
-  "directory": "/Users/galesky/Documents/GitHub/onvacation_project/cpp_front/build",
-  "command": "/usr/bin/c++  -I/Users/galesky/Documents/GitHub/onvacation_project/cpp_front/includes -I/Users/galesky/Documents/GitHub/onvacation_project/cpp_front/extern -std=gnu++20 -arch arm64 -o CMakeFiles/e.dir/src/main.cpp.o -c /Users/galesky/Documents/GitHub/onvacation_project/cpp_front/src/main.cpp",
-  "file": "/Users/galesky/Documents/GitHub/onvacation_project/cpp_front/src/main.cpp",
-  "output": "CMakeFiles/e.dir/src/main.cpp.o"
-}
-]
