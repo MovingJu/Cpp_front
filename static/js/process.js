@@ -1,3 +1,4 @@
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -34,62 +35,12 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-function main(link) {
-    var _this = this;
-    var video = document.querySelector('#video');
-    if (!(video instanceof HTMLVideoElement)) {
-        return;
-    }
-    var canvas = document.querySelector('#output');
-    if (!(canvas instanceof HTMLCanvasElement)) {
-        return;
-    }
-    navigator.mediaDevices.getUserMedia({ video: true })
-        .then(function (stream) { video.srcObject = stream; });
-    var ctx = canvas.getContext("2d");
-    canvas.width = 640;
-    canvas.height = 480;
-    var ws = new WebSocket(link + "/ws");
-    ws.onopen = function () {
-        console.log("Web Socket is connected!");
-    };
-    ws.onmessage = function (e) { return __awaiter(_this, void 0, void 0, function () {
-        var arrayBuffer, uint8, smallWidth, smallHeight, imageData, tempCanvas, tempCtx;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.process_image = process_image;
+function process_image() {
+    return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, e.data.arrayBuffer()];
-                case 1:
-                    arrayBuffer = _a.sent();
-                    uint8 = new Uint8ClampedArray(arrayBuffer);
-                    smallWidth = 160;
-                    smallHeight = 120;
-                    imageData = new ImageData(uint8, smallWidth, smallHeight);
-                    tempCanvas = document.createElement('canvas');
-                    tempCanvas.width = smallWidth;
-                    tempCanvas.height = smallHeight;
-                    tempCtx = tempCanvas.getContext('2d');
-                    tempCtx.putImageData(imageData, 0, 0);
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    ctx.drawImage(tempCanvas, 0, 0, smallWidth, smallHeight, 0, 0, canvas.width, canvas.height);
-                    return [2 /*return*/];
-            }
+            return [2 /*return*/];
         });
-    }); };
-    // 178, 218
-    function captureAndSend() {
-        var scale = 0.25;
-        if (!(video instanceof HTMLVideoElement)) {
-            return;
-        }
-        var width = (video.videoWidth || 640) * scale;
-        var height = (video.videoHeight || 480) * scale;
-        var tempCanvas = document.createElement('canvas');
-        tempCanvas.width = width;
-        tempCanvas.height = height;
-        var tempCtx = tempCanvas.getContext('2d');
-        tempCtx.drawImage(video, 0, 0, width, height);
-        var imageData = tempCtx.getImageData(0, 0, width, height);
-        ws.send(imageData.data.buffer);
-    }
-    setInterval(captureAndSend, 60);
+    });
 }
